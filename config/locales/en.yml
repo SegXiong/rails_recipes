@@ -21,6 +21,11 @@
 
 en:
   event_list: Event List
+  event:
+    status:
+      draft: "Draft"
+      public: "Public"
+      private: "Private"
   admin:
     event_list: Admin Event List
   hello: "Hi %{name},"

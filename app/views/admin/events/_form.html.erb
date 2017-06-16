@@ -28,7 +28,7 @@
       <%= f.radio_button :status, status %>
       <%= t(status, :scope => "event.status") %>
     </label>
-  <% end %>  #<%= f.select :status, Event::STATUS.map{|s| [t(s, :scope => "event.status"), s]}, {}, :class => "form-control" %> -->
+  <% end %>  <%= f.select :status, Event::STATUS.map{|s| [t(s, :scope => "event.status"), s]}, {}, :class => "form-control" %> -->
 
   <div class="btn-group" data-toggle="buttons">
     <% Event::STATUS.each do |status| %>

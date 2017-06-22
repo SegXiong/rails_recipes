@@ -21,6 +21,8 @@
 
 en:
   event_list: Event List
+  bulk_update: Bulk Update
+  bulk_delete: Bulk Delete
   event:
     status:
       draft: "Draft"

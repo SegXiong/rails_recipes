@@ -18,6 +18,8 @@ class Event < ApplicationRecord
  include RankedModel
  ranks :row_order
 
+ mount_uploader :logo, EventLogoUploader
+
  def to_param
    self.friendly_id
 
@@ -29,5 +31,8 @@ class Event < ApplicationRecord
    self.friendly_id ||= SecureRandom.uuid
 
  end
+
+ scope :only_public, -> {where(:status => "public")}
+ scope :only_available, -> {where(:status => ["public", "private"])}
 
 end

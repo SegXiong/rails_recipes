@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  require 'sidekiq/web'
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :users
 
   resources :events do
@@ -24,13 +29,18 @@ Rails.application.routes.draw do
     end
     resources :events do
       resources :tickets, :controller => "event_tickets"
-      resources :registrations, :controller => "event_registrations"
+      resources :registrations, :controller => "event_registrations" do
+        collection do
+          post :import
+        end
+      end
       collection do
         post :bulk_update
       end
       member do
         post :reorder
       end
+      resources :registration_imports
     end
     resources :users do
       resource :profile, :controller => "user_profiles"

@@ -3,11 +3,11 @@
 <h2>step 2</h2>
 
 <% if @registration.errors.any? %>
-  <url>
+  <ul>
     <% @registration.errors.full_messages.each do |error| %>
       <li><%= error %></li>
     <% end %>
-  </url>
+  </ul>
 <% end %>
 
 <%= form_for @registration, :url => update_step2_event_registration_path(@event, @registration) do |f| %>
